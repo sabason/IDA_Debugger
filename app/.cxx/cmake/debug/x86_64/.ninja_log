@@ -1,0 +1,15 @@
+# ninja log v5
+0	374	693847857	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	a731c8a0fc3eb944
+375	545	693847857	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	159d26ddcb457474
+1	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+1	351	693847914	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	a731c8a0fc3eb944
+351	488	693847915	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	159d26ddcb457474
+0	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+1	15	0	clean	fe80bd915ca382d0
+0	13	0	clean	fe80bd915ca382d0
+0	21	0	clean	fe80bd915ca382d0

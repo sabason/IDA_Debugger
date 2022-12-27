@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/activity_main" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/getIP" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ip1" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:onClick="onClick" />
+    <Button android:enabled="false" android:id="@id/start" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="@string/startdebug" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:onClick="onClick"
+        android:layout_marginStart="14.0dip"
+        android:layout_alignParentStart="true" />
+    <Button android:id="@id/exit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="13.0dip" android:text="@string/exit" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:onClick="onClick"
+        android:layout_marginEnd="13.0dip"
+        android:layout_alignParentEnd="true" />
+    <TextView android:id="@id/IPText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/ip" android:layout_below="@id/start" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView android:id="@id/sample_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:layout_below="@id/IPText" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+    <TextView android:gravity="center|left" android:id="@id/IP" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/IPText" android:layout_alignBaseline="@id/IPText" android:layout_alignBottom="@id/IPText" android:layout_alignParentRight="true"
+        android:layout_toEndOf="@id/IPText"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

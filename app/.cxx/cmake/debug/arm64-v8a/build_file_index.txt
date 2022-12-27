@@ -1,0 +1,1 @@
+L:\c_app\ida_debug\app\src\main\cpp\CMakeLists.txt

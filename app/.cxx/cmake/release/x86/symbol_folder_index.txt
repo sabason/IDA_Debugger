@@ -1,0 +1,1 @@
+L:\c_app\ida_debug\app\build\intermediates\cmake\release\obj\x86

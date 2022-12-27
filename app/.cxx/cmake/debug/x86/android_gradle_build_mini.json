@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "L:\\c_app\\ida_debug\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "E:\\SDK_AndroidStudio\\cmake\\3.18.1\\bin\\ninja.exe",
+      "-C",
+      "L:\\c_app\\ida_debug\\app\\.cxx\\cmake\\debug\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "E:\\SDK_AndroidStudio\\cmake\\3.18.1\\bin\\ninja.exe",
+    "-C",
+    "L:\\c_app\\ida_debug\\app\\.cxx\\cmake\\debug\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "native-lib::@6890427a1f51a3e7e1df": {
+      "artifactName": "native-lib",
+      "abi": "x86",
+      "output": "L:\\c_app\\ida_debug\\app\\build\\intermediates\\cmake\\debug\\obj\\x86\\libnative-lib.so",
+      "runtimeFiles": []
+    }
+  }
+}

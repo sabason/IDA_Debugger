@@ -1,0 +1,21 @@
+Executable : E:\SDK_AndroidStudio\cmake\3.18.1\bin\cmake.exe
+arguments : 
+-HL:\c_app\ida_debug\app\src\main\cpp
+-DCMAKE_FIND_ROOT_PATH=L:\c_app\ida_debug\app\.cxx\cmake\release\prefab\x86\prefab
+-DCMAKE_BUILD_TYPE=Release
+-DCMAKE_TOOLCHAIN_FILE=E:\SDK_AndroidStudio\ndk\21.4.7075529\build\cmake\android.toolchain.cmake
+-DANDROID_ABI=x86
+-DANDROID_NDK=E:\SDK_AndroidStudio\ndk\21.4.7075529
+-DANDROID_PLATFORM=android-16
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DCMAKE_ANDROID_NDK=E:\SDK_AndroidStudio\ndk\21.4.7075529
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=L:\c_app\ida_debug\app\build\intermediates\cmake\release\obj\x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=L:\c_app\ida_debug\app\build\intermediates\cmake\release\obj\x86
+-DCMAKE_MAKE_PROGRAM=E:\SDK_AndroidStudio\cmake\3.18.1\bin\ninja.exe
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_SYSTEM_VERSION=16
+-BL:\c_app\ida_debug\app\.cxx\cmake\release\x86
+-GNinja
+jvmArgs : 
+

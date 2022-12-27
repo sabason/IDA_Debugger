@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        applicationId 'net.czlz.ida_debugger'
+        minSdkVersion 16
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a','x86'
+        }
+        externalNativeBuild {
+            cmake {
+                cppFlags ''
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.18.1'
+        }
+    }
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-v4:28.0.0"
+        resolutionStrategy.force "ccom.android.support:appcompat-v7:28.0.0"
+    }
+}
+
+
+dependencies {
+    //implementation fileTree(dir: 'lib', include: ['*.jar'])
+//    compileOnly files('libs/XposedBridgeApi-89.jar') //引入包 手动加jar包
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    //compileOnly "com.android.support:appcompat-v7:28.0.0"
+    //compileOnly 'com.android.support:support-v4:28.0.0'
+
+}

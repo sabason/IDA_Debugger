@@ -1,0 +1,23 @@
+# ninja log v5
+0	356	693847855	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	d1d191bbf413dd2f
+357	496	693847856	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	c95514da1cd11bd
+0	14	0	clean	fe80bd915ca382d0
+0	15	0	clean	fe80bd915ca382d0
+2	397	693847913	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	d1d191bbf413dd2f
+397	536	693847913	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	c95514da1cd11bd
+0	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+0	15	0	clean	fe80bd915ca382d0
+2	379	693849287	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	d1d191bbf413dd2f
+379	517	693849287	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	c95514da1cd11bd
+0	15	0	clean	fe80bd915ca382d0
+2	388	693849342	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	d1d191bbf413dd2f
+388	526	693849342	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	c95514da1cd11bd
+0	14	0	clean	fe80bd915ca382d0
+0	14	0	clean	fe80bd915ca382d0
+1	353	693850908	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	d1d191bbf413dd2f
+353	494	693850908	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	c95514da1cd11bd
+0	14	0	clean	fe80bd915ca382d0
+0	15	0	clean	fe80bd915ca382d0
+2	393	693851185	CMakeFiles/native-lib.dir/ida_debugger.cpp.o	d1d191bbf413dd2f
+393	537	693851185	L:/c_app/ida_debug/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	c95514da1cd11bd

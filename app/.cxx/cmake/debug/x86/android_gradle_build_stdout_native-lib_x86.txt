@@ -1,0 +1,2 @@
+ninja: Entering directory `L:\c_app\ida_debug\app\.cxx\cmake\debug\x86'
+ninja: no work to do.
