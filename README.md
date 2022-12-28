@@ -1,0 +1,3 @@
+# IDA_Debugger
+ida android_server debug
+将IDA中的dbgsrv远程调试服务端以apk打包方便在android中用IDA远程调试
