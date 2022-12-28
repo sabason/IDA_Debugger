@@ -1,3 +1,0 @@
-ninja: Entering directory `L:\c_app\ida_debug\app\.cxx\cmake\debug\armeabi-v7a'
-[1/2] Building CXX object CMakeFiles/native-lib.dir/ida_debugger.cpp.o
-[2/2] Linking CXX shared library L:\c_app\ida_debug\app\build\intermediates\cmake\debug\obj\armeabi-v7a\libnative-lib.so

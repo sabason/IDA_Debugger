@@ -25,6 +25,10 @@ import java.util.List;
 import java.util.regex.Pattern;
 import net.czlz.ida_debugger.DebugServer;
 import android.util.Log;
+import android.os.Build;
+
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
     static final String TAG = "ida_debug";
@@ -34,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button startbutton;
     private TextView tv;
     private int wifiSleepPolicy = 0;
+
+    public void handleMessage(Message msg) {
+        MainActivity.this.tv.setText(msg.obj.toString());
+    }
 //    private Handler handler = new Handler() { // from class: net.czlz.ida_debugger.MainActivity.1
 //        @Override // android.os.Handler
 //        public void handleMessage(Message msg) {
@@ -54,12 +62,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.ip = (TextView) findViewById(R.id.IP);
         this.startbutton = (Button) findViewById(R.id.start);
         if (getRoot()) {
-            if (CPUtil.getCpuArchitecture()[0].toString().equalsIgnoreCase("ARM")) {
-                this.startbutton.setEnabled(true);
-                CopyFile();
-            } else {
+            //CPUtil.getCpuArchitecture()[0].toString())
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (CopyFile(Build.SUPPORTED_ABIS[0]))
+                {
+                    this.startbutton.setEnabled(true);
+                }
+            }
+            else {
                 this.tv.setText("IDA服务端不支持ARM以外的硬件设备");
             }
+//            if (CPUtil.getCpuArchitecture()[0].toString().equalsIgnoreCase("ARM")) {
+//                this.startbutton.setEnabled(true);
+//                CopyFile();
+//            } else {
+//                this.tv.setText("IDA服务端不支持ARM以外的硬件设备");
+//            }
         } else {
             this.tv.setText("获取权限失败！");
         }
@@ -72,10 +90,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
     }
 
-    private void CopyFile() {
+    private boolean CopyFile(String systemAbi) {
         InputStream in = null;
         FileOutputStream out = null;
         String path = getFilesDir().getPath();
+        String dbgSrvName = "";
+        if (systemAbi.equalsIgnoreCase("ARM")){
+            dbgSrvName = "android_server64";
+        }
+        else if (systemAbi.equalsIgnoreCase("x86")){
+            dbgSrvName = "android_x86_server";
+        }
+        else if (systemAbi.equalsIgnoreCase("x86_64")){
+            dbgSrvName = "android_x64_server";
+        }
+
+
+
         File file = new File(path + "/android_server");
         try {
             try {
@@ -83,10 +114,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!file_.exists()) {
                     file_.mkdirs();
                 }
+                if (file.exists())
+                {
+                    file.delete();
+                }
                 if (file_.exists() && !file.exists()) {
                     file.createNewFile();
-                    in = getAssets().open("android_server");
-                    FileOutputStream out2 = new FileOutputStream(file);
+                    in = getAssets().open(dbgSrvName);
+                    out = new FileOutputStream(file);
                     try {
                         byte[] buf = new byte[1024];
                         while (true) {
@@ -94,31 +129,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             if (length == -1) {
                                 break;
                             }
-                            out2.write(buf, 0, length);
+                            out.write(buf, 0, length);
                         }
-                        out2.flush();
-                        RootUtil.RootCommand("chmod 777 " + path + "/android_server");
-                        out = out2;
+                        out.flush();
+                        RootUtil.RootCommand("chmod 777 " + path + "/"+dbgSrvName);
                     } catch (Exception e) {
-                        e = e;
-                        out = out2;
                         e.printStackTrace();
                         if (in != null) {
                             try {
                                 in.close();
                             } catch (Exception e1) {
                                 e1.printStackTrace();
-                                return;
+                                return false;
                             }
                         }
                         if (out != null) {
                             out.close();
-                            return;
+                            return true;
                         }
-                        return;
+                        return false;
                     } catch (Throwable th) {
-                        th = th;
-                        out = out2;
                         if (in != null) {
                             try {
                                 in.close();
@@ -133,16 +163,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         throw th;
                     }
                 }
+                else
+                {
+                    return true;
+                }
                 if (in != null) {
                     try {
                         in.close();
                     } catch (Exception e13) {
                         e13.printStackTrace();
-                        return;
+                        return false;
                     }
                 }
                 if (out != null) {
                     out.close();
+                    return true;
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Failed dumping state", e);
@@ -150,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Throwable th2) {
             Log.e(TAG, "Failed dumping state", th2);
         }
+        return false;
     }
 
     @Override // android.app.Activity, android.view.KeyEvent.Callback
@@ -176,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private String getIP() {
-        WifiManager wifiManager = (WifiManager) getSystemService("wifi");
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if (!wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
         }
@@ -218,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         this.intent = new Intent(this, DebugServer.class);
-        bindService(this.intent, this, 1);
+        bindService(this.intent, this, Context.BIND_AUTO_CREATE);
         Settings.System.putInt(getContentResolver(), "wifi_sleep_policy", this.wifiSleepPolicy);
         this.startbutton.setText("关闭调试");
     }
@@ -232,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void setData(String data) {
                 Message msg = new Message();
                 msg.obj = data;
-//                MainActivity.this.handler.sendMessage(msg);
+                MainActivity.this.handleMessage(msg); //sendMessage(msg);
             }
         });
     }
@@ -242,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public static boolean isServiceRunning(Context context) {
-        ActivityManager am = (ActivityManager) context.getSystemService("activity");
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> services = am.getRunningServices(100);
         for (ActivityManager.RunningServiceInfo info : services) {
             String name = info.service.getClassName();

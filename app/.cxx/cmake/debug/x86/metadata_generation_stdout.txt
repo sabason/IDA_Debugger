@@ -1,3 +1,0 @@
--- Configuring done
--- Generating done
--- Build files have been written to: L:/c_app/ida_debug/app/.cxx/cmake/debug/x86

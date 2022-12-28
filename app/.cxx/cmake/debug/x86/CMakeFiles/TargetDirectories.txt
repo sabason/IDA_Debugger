@@ -1,3 +1,0 @@
-L:/c_app/ida_debug/app/.cxx/cmake/debug/x86/CMakeFiles/native-lib.dir
-L:/c_app/ida_debug/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
-L:/c_app/ida_debug/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir

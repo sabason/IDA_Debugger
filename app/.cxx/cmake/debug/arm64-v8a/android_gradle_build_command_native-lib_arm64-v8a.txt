@@ -1,7 +1,0 @@
-Executable : E:\SDK_AndroidStudio\cmake\3.18.1\bin\ninja.exe
-arguments : 
--C
-L:\c_app\ida_debug\app\.cxx\cmake\debug\arm64-v8a
-native-lib
-jvmArgs : 
-

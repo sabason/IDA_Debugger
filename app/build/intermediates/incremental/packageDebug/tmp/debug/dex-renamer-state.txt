@@ -1,4 +1,0 @@
-#Tue Dec 27 21:35:31 CST 2022
-base.0=L\:\\c_app\\ida_debug\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
